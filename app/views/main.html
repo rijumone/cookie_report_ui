@@ -1,0 +1,32 @@
+<div class="">
+    Reports
+</div>
+<div class="" ng-controller="MainCtrl">
+
+    <!-- <datetimepicker data-ng-model="data.date"></datetimepicker> -->
+    <form ng-submit="getData()">
+        <input placeholder="startDate" type="text" name="startDate" ng-model="startDate" value="Oct 28 2016 00:00:00 GMT+0530 (India Standard Time)">
+        <input placeholder="endDate" type="text" name="endDate" ng-model="endDate" value="Oct 28 2016 01:00:00 GMT+0530 (India Standard Time)">
+        <input type="submit" name="">
+    </form>
+
+    <br>
+    <table class="bootstrap-table">
+        <thead>
+        <th>cookie ID</th>
+        <th>Visited URL</th>
+        </thead>
+        <tbody>
+            <tr ng-repeat="cookies in reports.data">
+                <td>
+                    {{ cookies._id}}
+                </td>
+                <td>
+                    <span style="display:{{ !$index ? 'inline' : 'none' }}" ng-repeat="cookie in cookies.flow | orderBy : 'createdAt'">{{  cookie.visitedURL }} <br></span>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    foo   ---{{reports.data}}
+</div>
+
