@@ -2,7 +2,7 @@ angular.module('reportsApp')
 .service('ReportsService', function ($q, $http, $rootScope) {
 
     this.FetchReport = function (input, cb) {
-		$http.post('http://analytics.religarehealthinsurance.com/user/path', input)
+		$http.post('http://localhost:1337/user/path', input)
 		.success(function(response){
 			console.log("response", response);
 			return cb(null, response);
@@ -13,3 +13,4 @@ angular.module('reportsApp')
     }
 
 });
+

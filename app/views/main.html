@@ -2,30 +2,52 @@
     Reports
 </div>
 <div class="" ng-controller="MainCtrl">
-
+   
     <!-- <datetimepicker data-ng-model="data.date"></datetimepicker> -->
     <form ng-submit="getData()">
-        <input placeholder="startDate" type="text" name="startDate" ng-model="startDate" value="Oct 28 2016 00:00:00 GMT+0530 (India Standard Time)">
-        <input placeholder="endDate" type="text" name="endDate" ng-model="endDate" value="Oct 28 2016 01:00:00 GMT+0530 (India Standard Time)">
+        <input placeholder="startDate" type="text" name="startDate" ng-model="startDate">
+        <input placeholder="endDate" type="text" name="endDate" ng-model="endDate">
         <input type="submit" name="">
     </form>
 
     <br>
+     <button export-to-csv>Download</button>
     <table class="bootstrap-table">
-        <thead>
+        <tr>
         <th>cookie ID</th>
         <th>Visited URL</th>
-        </thead>
-        <tbody>
+        <th>Earliest Time Stamp</th>
+        <th>Owner</th>
+        </tr>
+
             <tr ng-repeat="cookies in reports.data">
                 <td>
                     {{ cookies._id}}
                 </td>
+                <!--
                 <td>
                     <span style="display:{{ !$index ? 'inline' : 'none' }}" ng-repeat="cookie in cookies.flow | orderBy : 'createdAt'">{{  cookie.visitedURL }} <br></span>
                 </td>
+                <td>
+                    <span style="display:{{ cookie.visitedURL.indexOf('policybazaar') !== -1 ? 'inline' : 'none' }}" ng-repeat="cookie in cookies.flow | orderBy : 'createdAt'">{{  cookie.createdAt | date :  "dd.MM.y h:m:s" }} <br></span>
+                </td>
+                <td>
+                    <span style="display:{{ cookie.visitedURL.indexOf('policybazaar') == -1 ? 'inline' : 'none' }}" ng-repeat="cookie in cookies.flow | orderBy : 'createdAt'">{{  cookie.createdAt | date :  "dd.MM.y h:m:s" }} <br></span>
+                </td>
+                <td>
+                    <span style="display:{{ !$index ? 'inline' : 'none' }}" ng-repeat="cookie in cookies.flow | orderBy : 'createdAt'">{{  cookie.visitedURL.indexOf('policybazaar') !== -1 ? 'PB' : 'religare' }} <br></span>
+                </td>
+                -->
+                <td>
+                    {{ cookies.flow[0].visitedURL}}
+                </td>
+                <td>
+                    {{ cookies.flow[0].createdAt}}
+                </td>
+                <td>
+                    {{  cookie.flow[0].visitedURL.indexOf('policybazaar') !== -1 ? 'PB' : 'religare' }}
+                </td>
             </tr>
-        </tbody>
     </table>
     foo   ---{{reports.data}}
 </div>
