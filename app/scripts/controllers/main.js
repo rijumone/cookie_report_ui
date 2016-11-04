@@ -13,7 +13,7 @@ angular.module('reportsApp')
 	console.log($scope.startDate);
 	
 	/* fetch report */
-	var input = { "startDate" : "Oct 28 2016 00:00:00 GMT+0530 (India Standard Time)" , "endDate" :"Oct 28 2016 23:59:59 GMT+0530 (India Standard Time)" };
+	var input = { "startDate" : "Oct 28 2016 00:00:00 GMT+0530 (India Standard Time)" , "endDate" :"Oct 28 2016 00:59:59 GMT+0530 (India Standard Time)" };
 	ReportsService.FetchReport(input, function(err, response){
 		if(response){
 			console.log("response", response);
