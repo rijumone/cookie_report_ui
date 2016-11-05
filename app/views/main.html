@@ -1,18 +1,19 @@
-<div class="">
+<!-- <div class="">
     Reports
-</div>
+</div> -->
 <div class="" ng-controller="MainCtrl">
 
     <!-- <datetimepicker data-ng-model="data.date"></datetimepicker> -->
     <form ng-submit="getData()">
-        <input placeholder="startDate" type="text" name="startDate" ng-model="startDate">
+        <!-- <input placeholder="startDate" type="text" name="startDate" ng-model="startDate"> -->
+        <datetimepicker data-ng-model="startDate"></datetimepicker>
         <input placeholder="endDate" type="text" name="endDate" ng-model="endDate">
         <input type="submit" name="">
     </form>
 
     <br>
-    <!-- <button export-to-csv>Download</button> -->
-    <table class="bootstrap-table">
+    <button export-to-csv>Download</button>
+    <table class="table table-striped">
         <tr>
             <th>cookie ID</th>
             <th>Earliest Visited Base URL</th>
@@ -21,12 +22,7 @@
         </tr>
 
         <tr ng-repeat="cookies in reports.data">
-            <td>
-                <a href="/#/journey/{{ cookies._id}}">                    
-                    {{ cookies._id}}
-                </a>
-
-            </td>
+            <td><a href="/#/journey/{{ cookies._id}}">{{ cookies._id}}</a></td>
             <!--
             <td>
                 <span style="display:{{ !$index ? 'inline' : 'none' }}" ng-repeat="cookie in cookies.flow | orderBy : 'createdAt'">{{  cookie.visitedURL }} <br></span>
@@ -41,14 +37,10 @@
                 <span style="display:{{ !$index ? 'inline' : 'none' }}" ng-repeat="cookie in cookies.flow | orderBy : 'createdAt'">{{  cookie.visitedURL.indexOf('policybazaar') !== -1 ? 'PB' : 'religare' }} <br></span>
             </td>
             -->
-            <td>
-                {{ cookies.flow[0].baseURL}}
-            </td>
-            <td>
-                {{ cookies.flow[0].createdAt | date :  "dd.MM.y h:m:s" }} 
-            </td>
+            <td>{{ cookies.flow.baseURL}}</td>
+            <td>{{ cookies.flow.createdAt | date :  "dd.MM.y h:m:s" }}</td>
 
         </tr>
     </table>
-    <!-- foo   ---{{reports.data}} -->
+    <!-- <pre>{{reports | json}}</pre> -->
 </div>

@@ -10,10 +10,11 @@
 angular.module('reportsApp')
 .controller('MainCtrl', function ($scope, $rootScope, $routeParams, $location, $window, $timeout, ReportsService ){
 
+	console.log("load");
 	console.log($scope.startDate);
 	
 	/* fetch report */
-	var input = { "startDate" : "Oct 28 2016 00:00:00 GMT+0530 (India Standard Time)" , "endDate" :"Oct 28 2016 00:59:59 GMT+0530 (India Standard Time)" };
+	var input = { "startDate" : "Oct 31 2016 00:00:00 GMT+0530 (India Standard Time)" , "endDate" :"Oct 31 2016 23:59:59 GMT+0530 (India Standard Time)" , "firstOnly" :"true" };
 	ReportsService.FetchReport(input, function(err, response){
 		if(response){
 			console.log("response", response);
@@ -26,7 +27,9 @@ angular.module('reportsApp')
 
 	$scope.getData = function(){
 
-		// console.log($scope.startDate);
+		console.log($scope.startDate);
+		var myarr = $scope.startDate.split(" ");
+		
 		if(typeof $scope.startDate == "undefined"){$scope.startDate = "Oct 28 2016 00:00:00 GMT+0530 (India Standard Time)";}
 		if(typeof $scope.endDate == "undefined"){$scope.endDate = "Oct 28 2016 23:59:59 GMT+0530 (India Standard Time)";}
 		/* fetch report */
@@ -43,6 +46,7 @@ angular.module('reportsApp')
 			}
 		})
 	};
+	
 
 }).directive('exportToCsv',function(){
   	return {
@@ -54,8 +58,16 @@ angular.module('reportsApp')
 	        	var csvString = '';
 	        	for(var i=0; i<table.rows.length;i++){
 	        		var rowData = table.rows[i].cells;
-	        		for(var j=0; j<rowData.length;j++){
-	        			csvString = csvString + rowData[j].innerHTML + ",";
+	        		for(var j=0; j<rowData.length;j++){ 
+	        			if(i==1){
+	        			// console.log('a');console.log(rowData[j].nextElementSibling);
+	        			// console.log('b');console.log(rowData[j].children[0].innerHTML);
+	        		}
+		        		if(rowData[j].children.length) {
+		        			csvString = csvString + rowData[j].children[0].innerHTML + ",";
+		        		}else{
+		        			csvString = csvString + rowData[j].innerHTML + ",";
+		        		}
 	        		}
 	        		csvString = csvString.substring(0,csvString.length - 1);
 	        		csvString = csvString + "\n";

@@ -1,21 +1,16 @@
-<style>
-    table, tr, td {
-         /*border: 1px solid black;*/
-    }
-</style>
-<table>
+<table class="table table-striped">
     <tr>
         <th>from</th>
         <th>to</th>
         <th>at</th>
     </tr>
     <tr ng-repeat="stop in journey.data">
-        <td>{{ stop._id.referrer == "" ? 'none' : stop._id.referrer }}</td>
-        <td>{{ stop._id.visitedURL}}</td>
-        <td>{{ stop._id.createdAt | date :  "dd.MM.y h:m:s" }}</td>
+        <td>{{ stop.referrer == "" ? 'none' : stop.referrer }}</td>
+        <td>{{ stop.visitedURL}}</td>
+        <td>{{ stop.createdAt | date :  "dd.MM.y h:m:s" }}</td>
     </tr>
 </table>
-<table>
+<table class="table table-striped">
     <tr>
         <th>policy ID</th>
         <th>policy number</th>
@@ -24,13 +19,11 @@
         <th>at</th>
     </tr>
     <tr ng-repeat="payment in payment.data">
-        <td>{{ payment._id.policyId  }}</td>
-        <td>{{ payment._id.policyNum  }}</td>
-        <td>{{ payment._id.transactionRefNum  }}</td>
-        <td>{{ payment._id.uwDicision  }}</td>
-        <td>{{ payment._id.createdAt | date :  "dd.MM.y h:m:s" }}</td>
+        <td>{{ payment.policyId  }}</td>
+        <td>{{ payment.policyNum  }}</td>
+        <td>{{ payment.transactionRefNum  }}</td>
+        <td>{{ payment.uwDicision  }}</td>
+        <td>{{ payment.createdAt | date :  "dd.MM.y h:m:s" }}</td>
     </tr>
 </table>
-<pre>
-<!-- {{ payment.data | json }} -->
-</pre>
+<!-- <pre>{{ payment | json }}</pre> -->
