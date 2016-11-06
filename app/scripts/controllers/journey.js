@@ -12,7 +12,7 @@ angular.module('reportsApp')
 
 	console.log($routeParams.journey);	
 	/* fetch report */
-	var input = { "cookieID" : $routeParams.journey};
+	var input = { "cookieIDs" : [$routeParams.journey]};
 	ReportsService.FetchJourney(input, function(err, response){
 		if(response){
 			console.log("response: ", response);			

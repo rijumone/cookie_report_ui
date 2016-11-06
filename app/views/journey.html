@@ -1,3 +1,4 @@
+<div class="container table-responsive">
 <table class="table table-striped">
     <tr>
         <th>from</th>
@@ -7,7 +8,7 @@
     <tr ng-repeat="stop in journey.data">
         <td>{{ stop.referrer == "" ? 'none' : stop.referrer }}</td>
         <td>{{ stop.visitedURL}}</td>
-        <td>{{ stop.createdAt | date :  "dd.MM.y h:m:s" }}</td>
+        <td>{{ stop.createdAt | date :  "dd.MM.y h:m:s a" }}</td>
     </tr>
 </table>
 <table class="table table-striped">
@@ -23,7 +24,9 @@
         <td>{{ payment.policyNum  }}</td>
         <td>{{ payment.transactionRefNum  }}</td>
         <td>{{ payment.uwDicision  }}</td>
-        <td>{{ payment.createdAt | date :  "dd.MM.y h:m:s" }}</td>
+        <td>{{ payment.createdAt | date :  "dd.MM.y h:m:s a" }}</td>
     </tr>
 </table>
-<!-- <pre>{{ payment | json }}</pre> -->
+
+</div>
+<!-- <pre>{{ journey | json }}</pre> -->

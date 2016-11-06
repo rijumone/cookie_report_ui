@@ -5,23 +5,31 @@
 
     <!-- <datetimepicker data-ng-model="data.date"></datetimepicker> -->
     <form ng-submit="getData()">
-        <!-- <input placeholder="startDate" type="text" name="startDate" ng-model="startDate"> -->
+        <!-- <input placeholder="startDate" type="text" name="startDate" ng-model="startDate"> 
         <datetimepicker data-ng-model="startDate"></datetimepicker>
         <input placeholder="endDate" type="text" name="endDate" ng-model="endDate">
-        <input type="submit" name="">
+        -->
+        <input date-range-picker class="form-control date-picker" type="text" ng-model="datePicker.date" options=""/>
+        <button type="submit" class="btn btn-default">Submit</button>
     </form>
 
     <br>
-    <button export-to-csv>Download</button>
+    <button export-to-csv type="button" class="btn btn-default">
+      <span class="glyphicon glyphicon-download-alt"></span> Download
+    </button>
+    
     <table class="table table-striped">
         <tr>
             <th>cookie ID</th>
             <th>Earliest Visited Base URL</th>
             <th>Earliest Time Stamp</th>
-            <!-- <th>Owner</th> -->
+            <th>Policy Number</th>
+            <th>Policy ID</th>
+            <th>Transactional Ref Number</th>
+            
         </tr>
 
-        <tr ng-repeat="cookies in reports.data">
+        <tr ng-repeat="cookies in reports">
             <td><a href="/#/journey/{{ cookies._id}}">{{ cookies._id}}</a></td>
             <!--
             <td>
@@ -38,7 +46,10 @@
             </td>
             -->
             <td>{{ cookies.flow.baseURL}}</td>
-            <td>{{ cookies.flow.createdAt | date :  "dd.MM.y h:m:s" }}</td>
+            <td>{{ cookies.flow.createdAt | date :  "dd.MM.y h:m:s a" }}</td>
+            <td>{{ cookies.payment.policyNum }}</td>
+            <td>{{ cookies.payment.policyId }}</td>
+            <td>{{ cookies.payment.transactionRefNum }}</td>
 
         </tr>
     </table>

@@ -16,8 +16,11 @@ angular
     'ngRoute',
     'ngSanitize',
     'ngTouch',
+    'ngMaterial', 
+    'ngMessages',
+    'daterangepicker',
     // 'bootstrap',
-    'ui.bootstrap.datetimepicker'
+    // 'ui.bootstrap.datetimepicker'
   ])
   .config(function ($routeProvider) {
     $routeProvider

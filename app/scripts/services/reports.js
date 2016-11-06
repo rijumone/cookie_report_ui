@@ -36,7 +36,7 @@ angular.module('reportsApp')
 // [ ] additional fields  - according to report, merge timestamps
 // 
 // [ ] email files to qualtech
-// [ ] composer update 179
+// [v] composer update 179
 
 });
 
