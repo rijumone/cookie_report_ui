@@ -2,7 +2,7 @@ angular.module('reportsApp')
 .service('ReportsService', function ($q, $http, $rootScope) {
 
     this.FetchReport = function (input, cb) {
-		$http.post('http://192.168.0.5:1337/user/path', input)
+		$http.post('http://localhost:1337/user/path', input)
 		.success(function(response){
 			// console.log("response", response);
 			return cb(null, response);
@@ -13,7 +13,7 @@ angular.module('reportsApp')
     }
 
 	this.FetchJourney = function (input, cb) {
-		$http.post('http://192.168.0.5:1337/user/uniquecookie', input)
+		$http.post('http://localhost:1337/user/uniquecookie', input)
 		.success(function(response){
 			return cb(null, response);
 		})
@@ -22,7 +22,7 @@ angular.module('reportsApp')
 		});
     }
 	this.FetchPayment = function (input, cb) {
-		$http.post('http://192.168.0.5:1337/user/uniquepayment', input)
+		$http.post('http://localhost:1337/user/uniquepayment', input)
 		.success(function(response){
 			return cb(null, response);
 		})
@@ -33,7 +33,7 @@ angular.module('reportsApp')
 
 // [v] filter those data which have both religare and PB
 // [v] export
-// [ ] additional fields  - according to report, merge timestamps
+// [v] additional fields  - according to report, merge timestamps
 // 
 // [ ] email files to qualtech
 // [v] composer update 179

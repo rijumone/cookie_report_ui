@@ -21,10 +21,11 @@
     <table class="table table-striped">
         <tr>
             <th>cookie ID</th>
-            <th>Earliest Visited Base URL</th>
+            <th>Earliest Visited URL</th>
             <th>Earliest Time Stamp</th>
             <th>Policy Number</th>
             <th>Policy ID</th>
+            <th>UW Deicision</th>
             <th>Transactional Ref Number</th>
             
         </tr>
@@ -45,10 +46,11 @@
                 <span style="display:{{ !$index ? 'inline' : 'none' }}" ng-repeat="cookie in cookies.flow | orderBy : 'createdAt'">{{  cookie.visitedURL.indexOf('policybazaar') !== -1 ? 'PB' : 'religare' }} <br></span>
             </td>
             -->
-            <td>{{ cookies.flow.baseURL}}</td>
+            <td>{{ cookies.flow.visitedURL}}</td>
             <td>{{ cookies.flow.createdAt | date :  "dd.MM.y h:m:s a" }}</td>
             <td>{{ cookies.payment.policyNum }}</td>
             <td>{{ cookies.payment.policyId }}</td>
+            <td>{{ cookies.payment.uwDicision }}</td>
             <td>{{ cookies.payment.transactionRefNum }}</td>
 
         </tr>

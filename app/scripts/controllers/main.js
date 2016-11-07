@@ -11,8 +11,9 @@ angular.module('reportsApp')
 .controller('MainCtrl', function ($scope, $rootScope, $routeParams, $location, $window, $timeout, ReportsService ){
 
 $scope.datePicker = {};
-	$scope.datePicker.date = {startDate: moment().subtract(5,'d'), endDate: moment()};
+	$scope.datePicker.date = {startDate: moment().subtract(4,'d'), endDate: moment()};
 
+$scope.earlierDate = $scope.datePicker.date;
 	// console.log("load");
 	
 	
@@ -78,7 +79,7 @@ console.log(dateSplit);
 
 			for(var i=0; i < firstCookies.length ; i++){
 				cookieIDArr.push(response.data[i]._id);
-				firstCookies[i].flow.baseURL = firstCookies[i].flow.createdAt =  "Loading...";
+				firstCookies[i].flow.visitedURL = firstCookies[i].flow.createdAt =  "Loading...";
 
 			}
 			
